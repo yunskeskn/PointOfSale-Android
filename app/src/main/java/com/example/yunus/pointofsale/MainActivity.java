@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 totalPrice += productList.get(0).price;
                 totalPriceView.setText(Double.toString(totalPrice));
                 break;
-            case R.id.relative01:
+            case R.id.relative01: 
                 listViewItems.add("   "+productList.get(1).name + "                                     " + productList.get(1).price);
                 adapter.notifyDataSetChanged();
                 totalPrice += productList.get(1).price;
