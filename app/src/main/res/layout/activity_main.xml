@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container_scroll_view"
+        android:layout_width="846dp"
+        android:layout_height="578dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toStartOf="@+id/listView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615">
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="843dp"
+            android:layout_height="580dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp">
+
+            <!--1. satır-->
+            <RelativeLayout
+                android:id="@+id/relative00"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="0"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel00"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel00"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel00"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 1"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative01"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="1"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel01"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product2" />
+
+                <TextView
+                    android:id="@+id/textLabel01"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel01"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 2"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative02"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="2"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel02"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product3" />
+
+                <TextView
+                    android:id="@+id/textLabel02"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel02"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 3"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative03"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="3"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel03"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel03"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel03"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 4"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative04"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="4"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel04"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product2" />
+
+                <TextView
+                    android:id="@+id/textLabel04"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel04"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 5"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative05"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="5"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel05"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product3" />
+
+                <TextView
+                    android:id="@+id/textLabel05"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel05"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 6"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative06"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="6"
+                app:layout_row="0">
+
+                <ImageView
+                    android:id="@+id/imageLabel06"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel06"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel06"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 7"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+
+            <!--2. satır-->
+            <RelativeLayout
+                android:id="@+id/relative10"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="0"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel10"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel10"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel10"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 8"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative11"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="1"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel11"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product2" />
+
+                <TextView
+                    android:id="@+id/textLabel11"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel11"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 9"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative12"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="2"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel12"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product3" />
+
+                <TextView
+                    android:id="@+id/textLabel12"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel12"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 10"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative13"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="3"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel13"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel13"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel13"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 11"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative14"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="4"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel14"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product2" />
+
+                <TextView
+                    android:id="@+id/textLabel14"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel14"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 12"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative15"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="5"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel15"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product3" />
+
+                <TextView
+                    android:id="@+id/textLabel15"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel15"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 13"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative16"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="6"
+                app:layout_row="1">
+
+                <ImageView
+                    android:id="@+id/imageLabel16"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel16"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel16"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 14"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <!--3. satır-->
+            <RelativeLayout
+                android:id="@+id/relative20"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="0"
+                app:layout_row="2">
+
+                <ImageView
+                    android:id="@+id/imageLabel20"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product1" />
+
+                <TextView
+                    android:id="@+id/textLabel20"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel20"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 15"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative21"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="1"
+                app:layout_row="2">
+
+                <ImageView
+                    android:id="@+id/imageLabel21"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/product2" />
+
+                <TextView
+                    android:id="@+id/textLabel21"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/imageLabel21"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Product 16"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativePlus"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_border"
+                android:onClick="RelativeLayoutOnClick"
+                app:layout_column="2"
+                app:layout_row="2">
+
+                <ImageView
+                    android:id="@+id/imageLabelPlus"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/plus" />
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.GridLayout>
+    </ScrollView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="1280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation">
+
+    </android.support.design.widget.BottomNavigationView>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="410dp"
+        android:layout_height="447dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="8dp"
+        android:text="Satışı Onayla"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintStart_toStartOf="@+id/listView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="61dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Total : "
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/totalPrice"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="@+id/listView"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:layout_constraintVertical_bias="0.509" />
+
+    <Button
+        android:id="@+id/btn_Clear"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Clear All"
+        android:onClick="RelativeLayoutOnClick"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+</android.support.constraint.ConstraintLayout>
