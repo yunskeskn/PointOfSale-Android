@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -102,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
         Button btn_Confirm = (Button) findViewById(R.id.button);
         totalPriceView = (TextView) findViewById(R.id.totalPrice);
 
+        itemList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewItems.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
 
 
 
@@ -130,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 totalPrice += productList.get(0).price;
                 totalPriceView.setText(Double.toString(totalPrice));
                 break;
-            case R.id.relative01: 
+            case R.id.relative01:
                 listViewItems.add("   "+productList.get(1).name + "                                     " + productList.get(1).price);
                 adapter.notifyDataSetChanged();
                 totalPrice += productList.get(1).price;
