@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     ArrayList<String> listViewItems;
     ArrayList<Product> productList;
+    ArrayList<Product> saleProductList;
+    SaleInfoRequestModel saleInfoRequestModel ;
     ArrayAdapter<String> adapter;
     Double totalPrice = 0.0;
     TextView totalPriceView;
@@ -111,132 +113,98 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        saleProductList = new ArrayList<Product>();
 
-
+        saleInfoRequestModel = new SaleInfoRequestModel();
+        saleInfoRequestModel.setMerchant_no("MRC"+ (new Random().nextInt(60000 - 35000) + 35000));
+        saleInfoRequestModel.setTerminal_no("TRM"+ (new Random().nextInt(60000 - 35000) + 35000));
     }
 
     public void RelativeLayoutOnClick(View v) {
         switch (v.getId() /*to get clicked view id**/) {
 
-            case R.id.button:
+            case R.id.buttonSale:
                 //listViewItems.add(productList.get(0).name + " --- " + productList.get(0).price);
                 Toast.makeText(getApplicationContext(),"button",Toast.LENGTH_LONG);
                 Log.i("ClickListener", "Button Çalıştırıldı...");
+                saleInfoRequestModel.setAmount(totalPrice);
+                SaleInfoOperation saleInfoOperation= new SaleInfoOperation();
+                saleInfoOperation.PostData(saleInfoRequestModel);
                 break;
 
             case R.id.btn_Clear:
-                listViewItems.clear();
-                listViewItems.add("  Item Name                                  Price   ");
-                adapter.notifyDataSetChanged();
-                totalPrice = 0.0;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.clear();
                 break;
 
             case R.id.relative00:
-                listViewItems.add("   "+productList.get(0).name + "                                     " + productList.get(0).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(0).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(0));
                 break;
             case R.id.relative01:
-                listViewItems.add("   "+productList.get(1).name + "                                     " + productList.get(1).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(1).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(1));
                 break;
             case R.id.relative02:
-                listViewItems.add("   "+productList.get(2).name + "                                     " + productList.get(2).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(2).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(2));
                 break;
             case R.id.relative03:
-                listViewItems.add("   "+productList.get(3).name + "                                     " + productList.get(3).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(3).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(3));
                 break;
             case R.id.relative04:
-                listViewItems.add("   "+productList.get(4).name + "                                     " + productList.get(4).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(4).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(4));
                 break;
             case R.id.relative05:
-                listViewItems.add("   "+productList.get(5).name + "                                     " + productList.get(5).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(5).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(5));
                 break;
             case R.id.relative06:
-                listViewItems.add("   "+productList.get(6).name + "                                     " + productList.get(6).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(6).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(6));
                 break;
             case R.id.relative10:
-                listViewItems.add("   "+productList.get(7).name + "                                     " + productList.get(7).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(7).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(7));
                 break;
             case R.id.relative11:
-                listViewItems.add("   "+productList.get(8).name + "                                     " + productList.get(8).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(8).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(8));
                 break;
             case R.id.relative12:
-                listViewItems.add("   "+productList.get(9).name + "                                   " + productList.get(9).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(9).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(9));
                 break;
             case R.id.relative13:
-                listViewItems.add("   "+productList.get(10).name + "                                   " + productList.get(10).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(10).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(10));
                 break;
             case R.id.relative14:
-                listViewItems.add("   "+productList.get(11).name + "                                   " + productList.get(11).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(11).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(11));
                 break;
             case R.id.relative15:
-                listViewItems.add("   "+productList.get(12).name + "                                   " + productList.get(12).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(12).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(12));
                 break;
             case R.id.relative16:
-                listViewItems.add("   "+productList.get(13).name + "                                   " + productList.get(13).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(13).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(13));
                 break;
             case R.id.relative20:
-                listViewItems.add("   "+productList.get(14).name + "                                   " + productList.get(14).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(14).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(14));
                 break;
             case R.id.relative21:
-                listViewItems.add("   "+productList.get(15).name + "                                   " + productList.get(15).price);
-                adapter.notifyDataSetChanged();
-                totalPrice += productList.get(15).price;
-                totalPriceView.setText(Double.toString(totalPrice));
+                saleProductList.add(productList.get(15));
                 break;
             case R.id.relativePlus:
 
                 break;
 
-
-
             default:
                 break;
         }
+
+        listViewItems.clear();
+        totalPrice = 0.0;
+        listViewItems.add("  Item Name                                  Price   ");
+        adapter.notifyDataSetChanged();
+
+        for (int i = 0; i < saleProductList.size(); i++) {
+            listViewItems.add("   "+saleProductList.get(i).name + "                                   " + saleProductList.get(i).price);
+            adapter.notifyDataSetChanged();
+            totalPrice += saleProductList.get(i).price;
+        }
+
+        totalPriceView.setText(Double.toString(totalPrice));
     }
 
 }
+
