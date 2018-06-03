@@ -2,6 +2,7 @@ package com.example.yunus.pointofsale;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import cz.msebera.android.httpclient.Header;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,25 +93,6 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        RelativeLayout rl_0 = (RelativeLayout) findViewById(R.id.relative00);
-        RelativeLayout rl_1 = (RelativeLayout) findViewById(R.id.relative01);
-        RelativeLayout rl_2 = (RelativeLayout) findViewById(R.id.relative02);
-        RelativeLayout rl_3 = (RelativeLayout) findViewById(R.id.relative03);
-        RelativeLayout rl_4 = (RelativeLayout) findViewById(R.id.relative04);
-        RelativeLayout rl_5 = (RelativeLayout) findViewById(R.id.relative05);
-        RelativeLayout rl_6 = (RelativeLayout) findViewById(R.id.relative06);
-        RelativeLayout rl_7 = (RelativeLayout) findViewById(R.id.relative10);
-        RelativeLayout rl_8 = (RelativeLayout) findViewById(R.id.relative11);
-        RelativeLayout rl_9 = (RelativeLayout) findViewById(R.id.relative12);
-        RelativeLayout rl_10 = (RelativeLayout) findViewById(R.id.relative13);
-        RelativeLayout rl_11 = (RelativeLayout) findViewById(R.id.relative14);
-        RelativeLayout rl_12 = (RelativeLayout) findViewById(R.id.relative15);
-        RelativeLayout rl_13 = (RelativeLayout) findViewById(R.id.relative16);
-        RelativeLayout rl_14 = (RelativeLayout) findViewById(R.id.relative20);
-        RelativeLayout rl_15 = (RelativeLayout) findViewById(R.id.relative21);
-        RelativeLayout rl_plus = (RelativeLayout) findViewById(R.id.relativePlus);
-        ImageView image_0 = (ImageView) findViewById(R.id.imageLabel00);
-        Button btn_Confirm = (Button) findViewById(R.id.button);
         totalPriceView = (TextView) findViewById(R.id.totalPrice);
 
         itemList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -110,18 +102,31 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-
-
-
     }
 
     public void RelativeLayoutOnClick(View v) {
         switch (v.getId() /*to get clicked view id**/) {
 
-            case R.id.button:
-                //listViewItems.add(productList.get(0).name + " --- " + productList.get(0).price);
-                Toast.makeText(getApplicationContext(),"button",Toast.LENGTH_LONG);
-                Log.i("ClickListener", "Button Çalıştırıldı...");
+            case R.id.buttonSend:
+                RequestParams rp = new RequestParams();
+                rp.add("merchant_no", "67000001");
+                rp.add("terminal_no", "670002");
+                rp.add("amount", "250");
+                HttpUtils.postByUrl("http://192.168.1.25:58072/api/Sale", rp, new JsonHttpResponseHandler()
+                {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                        // Pull out the first event on the public timeline
+                        Log.d("asd", "---------------- this is response : " + timeline.toString());
+                        try {
+                            JSONObject serverResp = new JSONObject(timeline.toString());
+                        } catch (JSONException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                );
                 break;
 
             case R.id.btn_Clear:
