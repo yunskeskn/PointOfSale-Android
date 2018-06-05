@@ -544,7 +544,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonSend"
+        android:id="@+id/buttonSale"
         android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
@@ -563,7 +563,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Total : "
-        app:layout_constraintBottom_toTopOf="@+id/buttonSend"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/totalPrice"
         app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="@+id/listView"
@@ -577,7 +577,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginTop="8dp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/buttonSend"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listView"
         app:layout_constraintVertical_bias="0.509" />
@@ -593,6 +593,6 @@
         android:onClick="RelativeLayoutOnClick"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonSend" />
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
 </android.support.constraint.ConstraintLayout>
