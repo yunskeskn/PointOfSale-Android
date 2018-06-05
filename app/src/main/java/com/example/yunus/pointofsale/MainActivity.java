@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 rp.add("merchant_no", "67000001");
                 rp.add("terminal_no", "670002");
                 rp.add("amount", "250");
-                HttpUtils.postByUrl("http://192.168.1.25:58072/api/Sale", rp, new JsonHttpResponseHandler()
+                HttpUtils.postByUrl("http://192.168.1.101:58070/api/Sale", rp, new JsonHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("asd", "---------------- this is response : " + timeline.toString());
                         try {
                             JSONObject serverResp = new JSONObject(timeline.toString());
+                            //qr bassssss
                         } catch (JSONException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
