@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> listViewItems;
     ArrayList<Product> productList;
     ArrayList<Product> saleProductList;
-    SaleInfoRequestModel saleInfoRequestModel ;
     ArrayAdapter<String> adapter;
     Double totalPrice = 0.0;
     TextView totalPriceView;
@@ -134,10 +133,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         saleProductList = new ArrayList<Product>();
-
-        saleInfoRequestModel = new SaleInfoRequestModel();
-        saleInfoRequestModel.setMerchant_no("MRC"+ (new Random().nextInt(60000 - 35000) + 35000));
-        saleInfoRequestModel.setTerminal_no("TRM"+ (new Random().nextInt(60000 - 35000) + 35000));
     }
 
     public void RelativeLayoutOnClick(View v) {
