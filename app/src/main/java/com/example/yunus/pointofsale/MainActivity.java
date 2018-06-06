@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 RequestParams rp = new RequestParams();
                 rp.add("merchant_no", "6786814902");
                 rp.add("terminal_no", "67012278");
-                rp.add("amount", "250");
+                rp.add("amount", totalPrice.toString());
                 HttpUtils.postByUrl("http://192.168.1.101:58070/api/Sale", rp, new JsonHttpResponseHandler()
                 {
                     @Override
@@ -123,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject serverResp = new JSONObject(timeline.toString());
                             //qr bassssss
+                            //Call QRActivity with serverResp
+                            Bundle sendBundle = new Bundle();
+                            sendBundle.putString("serverResp", timeline.toString());
+
+                            Intent i = new Intent(MainActivity.this, QRActivity.class);
+                            i.putExtras(sendBundle);
+                            startActivity(i);
                         } catch (JSONException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
