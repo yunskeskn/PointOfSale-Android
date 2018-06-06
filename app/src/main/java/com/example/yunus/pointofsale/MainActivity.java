@@ -33,6 +33,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView text3;
     private TextView mTextMessage;
     ArrayList<String> listViewItems;
     ArrayList<Product> productList;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         listViewItems.add("  Item Name                                  Price   ");
         ListView itemList = (ListView) findViewById(R.id.listView);
-
+        text3 = (TextView) findViewById(R.id.textView3);
         adapter=new ArrayAdapter<String>
                 (this, android.R.layout.activity_list_item, android.R.id.text1, listViewItems);
         itemList.setAdapter(adapter);
@@ -109,15 +110,16 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.buttonSend:
                 RequestParams rp = new RequestParams();
-                rp.add("merchant_no", "67000001");
-                rp.add("terminal_no", "670002");
+                rp.add("merchant_no", "6786814902");
+                rp.add("terminal_no", "67012278");
                 rp.add("amount", "250");
                 HttpUtils.postByUrl("http://192.168.1.101:58070/api/Sale", rp, new JsonHttpResponseHandler()
                 {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject timeline) {
                         // Pull out the first event on the public timeline
                         Log.d("asd", "---------------- this is response : " + timeline.toString());
+                        //text3.setText(timeline.toString());
                         try {
                             JSONObject serverResp = new JSONObject(timeline.toString());
                             //qr bassssss
@@ -125,6 +127,13 @@ public class MainActivity extends AppCompatActivity {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.d("Failed: ", ""+statusCode);
+                        Log.d("Error : ", "" + throwable);
                     }
                 }
                 );
