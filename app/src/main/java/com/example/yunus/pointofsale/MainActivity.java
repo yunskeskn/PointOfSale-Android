@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listViewItems = new ArrayList<String>();
         productList = new ArrayList<Product>();
+
         String[] products =
                 {"product1", "product2", "product3", "product4","product5",
                         "product6", "product7", "product8", "product9", "product10", "product11",
@@ -110,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.buttonSend:
                 RequestParams rp = new RequestParams();
-                rp.add("merchant_no", "6786814902");
-                rp.add("terminal_no", "67012278");
+                rp.add("merchant_no", "6706598320");
+                rp.add("terminal_no", "67001985");
                 rp.add("amount", totalPrice.toString());
-                HttpUtils.postByUrl("http://192.168.1.101:58070/api/Sale", rp, new JsonHttpResponseHandler()
+                HttpUtils.postByUrl("http://192.168.43.14:58070/api/Sale", rp, new JsonHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject timeline) {
@@ -124,12 +125,9 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject serverResp = new JSONObject(timeline.toString());
                             //qr bassssss
                             //Call QRActivity with serverResp
-                            Bundle sendBundle = new Bundle();
-                            sendBundle.putString("serverResp", timeline.toString());
-
-                            Intent i = new Intent(MainActivity.this, QRActivity.class);
-                            i.putExtras(sendBundle);
-                            startActivity(i);
+                            Intent intent = new Intent(MainActivity.this, QRActivity.class);
+                            intent.putExtra("serverResp", timeline.toString());
+                            startActivity(intent);
                         } catch (JSONException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.example.yunus.pointofsale;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,9 +20,9 @@ public class QRActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr);
-        text2Qr = "";
-
-
+        imageQR = (ImageView) findViewById(R.id.imageQR);
+        Intent intent = getIntent();
+        text2Qr = intent.getStringExtra("serverResp");
         generateQR(text2Qr);
     }
 
