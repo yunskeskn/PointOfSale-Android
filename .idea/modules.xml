@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PointOfSale.iml" filepath="$PROJECT_DIR$/PointOfSale.iml" />
+      <module fileurl="file://C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale.iml" filepath="C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale.iml" />
       <module fileurl="file://$PROJECT_DIR$/PointOfSale-Android.iml" filepath="$PROJECT_DIR$/PointOfSale-Android.iml" />
+      <module fileurl="file://C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale-Android.iml" filepath="C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\app\app.iml" filepath="C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\app\app.iml" />
     </modules>
   </component>
 </project>

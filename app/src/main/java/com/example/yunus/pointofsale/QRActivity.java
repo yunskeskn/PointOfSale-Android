@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -24,6 +25,16 @@ public class QRActivity extends AppCompatActivity {
         Intent intent = getIntent();
         text2Qr = intent.getStringExtra("serverResp");
         generateQR(text2Qr);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        //Geriye basıldığında, QR'dan Main'e geçerken ekranda progress bar kalmaması için bu kontrol eklendi.
+        Intent intent = new Intent(QRActivity.this, MainActivity.class);
+        intent.putExtra("isBackPressed", "true");
+        startActivity(intent);
+
     }
 
     public void generateQR (String text2Qr){

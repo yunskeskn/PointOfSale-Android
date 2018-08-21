@@ -1,8 +1,14 @@
 package com.example.yunus.pointofsale;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> listViewItems;
     ArrayList<Product> productList;
     ArrayAdapter<String> adapter;
+    private boolean progressStatus = false;
+    private boolean isBackPressed = false;
+    String isBackPressedString = "";
+    private Handler handler = new Handler();
     Double totalPrice = 0.0;
     TextView totalPriceView;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -78,16 +89,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isBackPressed = false;
         listViewItems = new ArrayList<String>();
         productList = new ArrayList<Product>();
+        progressStatus = false;
+
+
+        Intent intent = getIntent();//Geriye basıldığında, QR'dan Main'e geçerken ekranda progress bar kalmaması için bu kontrol eklendi.
+        isBackPressedString = intent.getStringExtra("isBackPressed");
+        if (isBackPressedString != null && isBackPressedString.equalsIgnoreCase("true") == true)
+            isBackPressed = true;
+        else
+            isBackPressed = false;
+
 
         //InputStream caInput = new BufferedInputStream(getResources().openRawResource(R.raw.test));
 
         String[] products =
-                {"product1", "product2", "product3", "product4","product5",
+                {"product1", "product2", "product3", "product4", "product5",
                         "product6", "product7", "product8", "product9", "product10", "product11",
                         "product12", "product13", "product14", "product15", "product16"};
-
 
 
         for (int i = 0; i < 17; i++) {
@@ -102,10 +123,9 @@ public class MainActivity extends AppCompatActivity {
         listViewItems.add("  Item Name                                  Price   ");
         ListView itemList = (ListView) findViewById(R.id.listView);
         text3 = (TextView) findViewById(R.id.textView3);
-        adapter=new ArrayAdapter<String>
+        adapter = new ArrayAdapter<String>
                 (this, android.R.layout.activity_list_item, android.R.id.text1, listViewItems);
         itemList.setAdapter(adapter);
-
 
 
         mTextMessage = (TextView) findViewById(R.id.message);
@@ -121,6 +141,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        progressStatus = false;
+        isBackPressed = true;
+        Toast.makeText(MainActivity.this,
+                "BACK key pressed",
+                Toast.LENGTH_LONG).show();
+
+    }
+
     private static SSLSocketFactory getSSLSocketFactory() {
         try {
             // Create a trust manager that does not validate certificate chains
@@ -157,44 +189,6 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId() /*to get clicked view id**/) {
 
             case R.id.buttonSend:
-//                RequestParams rp = new RequestParams();
-//                rp.add("merchant_no", "6706598320");
-//                rp.add("terminal_no", "67001985");
-//                rp.add("amount", totalPrice.toString());
-
-/*                String MY_FILE_NAME = "asd.txt";
-                // Create a new output file stream
-                FileOutputStream fileos = openFileOutput(MY_FILE_NAME, Context.MODE_PRIVATE);
-                // Create a new file input stream.
-                FileInputStream fileis = openFileInput(MY_FILE_NAME);*/
-
-//                OkHttpClient client = new OkHttpClient();
-//                SSLContext sslContext = SslUtils.getSslContextForCertificateFile(getApplicationContext(), "raw/posnetictyapikredicomtr.cer");
-//                client.setSslSocketFactory(sslContext.getSocketFactory());
-//                Response response;
-//                HttpUrl.Builder urlBuilder = HttpUrl.parse("https://posnetict.yapikredi.com.tr/MerchantBE/api/Sale").newBuilder();
-////                urlBuilder.addQueryParameter("merchant_no", "6706598320");
-////                urlBuilder.addQueryParameter("terminal_no", "67001985");
-////                urlBuilder.addQueryParameter("amount", totalPrice.toString());
-//                String url = urlBuilder.build().toString();
-//                RequestBody requestBody = new  MultipartBuilder()
-//                        .type(MultipartBuilder.FORM)
-//                        .addFormDataPart("merchant_no", "6706598320")
-//                        .addFormDataPart("terminal_no", "67001985")
-//                        .addFormDataPart("amount", totalPrice.toString())
-//                        .build();
-//
-//
-//                Request request = new Request.Builder()
-//                        .url(url)
-//                        .post(requestBody)
-//                        .build();
-//
-////                try {
-////                    response = client.newCall(request).execute();
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                }
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
                 httpClient.sslSocketFactory(getSSLSocketFactory());
                 httpClient.hostnameVerifier(new HostnameVerifier() {
@@ -222,9 +216,54 @@ public class MainActivity extends AppCompatActivity {
 
                 Call<SaleResponse> call = api.Sale(saleRequest);
 
+
+                final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+                pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+                // Set the progress dialog title and message
+                pd.setTitle("Waiting for the Service response !!!");
+                pd.setMessage("Transaction is sending to YKB.........");
+                pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFD4D9D0")));
+                pd.setIndeterminate(false);
+
+                // Finally, show the progress dialog
+                pd.show();
+                // Set the progress status zero on each button click
+                progressStatus = false;
+
+                // Start the lengthy operation in a background thread
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while(progressStatus){
+
+                            // Try to sleep the thread for 20 milliseconds
+                            try{
+                                Thread.sleep(20);
+                            }catch(InterruptedException e){
+                                e.printStackTrace();
+                            }
+
+                            // Update the progress bar
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // Update the progress status
+                                    // If task execution completed
+                                    if(progressStatus == true || isBackPressed == true){
+                                        // Dismiss/hide the progress dialog
+                                        pd.dismiss();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }).start(); // Start the operation
+
                 call.enqueue(new Callback<SaleResponse>() {
                     @Override
                     public void onResponse(Call<SaleResponse> call, Response<SaleResponse> response) {
+                        progressStatus = true;
                         Log.d("girdi 1", response.body().getToken_data());
                         //qr bassssss
                         //Call QRActivity with serverResp
@@ -235,11 +274,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(Call<SaleResponse> call, Throwable t) {
+                        progressStatus = true;
                         Log.d("onFailure Error ",t.getMessage());
                         String error = t.getMessage();
+
                         Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
 
 //                HttpUtils.postByUrl("https://posnetict.yapikredi.com.tr/MerchantBE/api/Sale", rp, new JsonHttpResponseHandler()
 //                {
