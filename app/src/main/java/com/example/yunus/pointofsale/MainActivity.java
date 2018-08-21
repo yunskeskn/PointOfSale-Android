@@ -142,17 +142,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        // TODO Auto-generated method stub
-        progressStatus = false;
-        isBackPressed = true;
-        Toast.makeText(MainActivity.this,
-                "BACK key pressed",
-                Toast.LENGTH_LONG).show();
-
-    }
-
     private static SSLSocketFactory getSSLSocketFactory() {
         try {
             // Create a trust manager that does not validate certificate chains
@@ -185,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     public void RelativeLayoutOnClick(View v) throws IOException {
         switch (v.getId() /*to get clicked view id**/) {
 
@@ -249,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     // Update the progress status
-                                    // If task execution completed
+                                    //Servis call bittiğinde ve QR ekranında geri basıldığında progressBar dialogunu kapat.
                                     if(progressStatus == true || isBackPressed == true){
                                         // Dismiss/hide the progress dialog
                                         pd.dismiss();
@@ -282,35 +272,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-//                HttpUtils.postByUrl("https://posnetict.yapikredi.com.tr/MerchantBE/api/Sale", rp, new JsonHttpResponseHandler()
-//                {
-//                    @Override
-//                    public void onSuccess(int statusCode, Header[] headers, JSONObject timeline) {
-//                        // Pull out the first event on the public timeline
-//                        Log.d("asd", "---------------- this is response : " + timeline.toString());
-//                        //text3.setText(timeline.toString());
-//                        try {
-//                            JSONObject serverResp = new JSONObject(timeline.toString());
-//                            //qr bassssss
-//                            //Call QRActivity with serverResp
-//                            Intent intent = new Intent(MainActivity.this, QRActivity.class);
-//                            intent.putExtra("serverResp", timeline.toString());
-//                            startActivity(intent);
-//                        } catch (JSONException e) {
-//                            // TODO Auto-generated catch block
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-//                        super.onFailure(statusCode, headers, responseString, throwable);
-//                        Log.d("Failed: ", ""+statusCode);
-//                        Log.d("Error : ", "" + throwable);
-//                    }
-//                });
                 break;
 
             case R.id.btn_Clear:
