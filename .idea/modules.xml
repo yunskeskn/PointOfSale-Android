@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale.iml" filepath="C:\Users\omerk\Desktop\Ford Dosyalar\ServiceApplication\PointOfSale-Android\PointOfSale.iml" />
       <module fileurl="file://$PROJECT_DIR$/PointOfSale-Android.iml" filepath="$PROJECT_DIR$/PointOfSale-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

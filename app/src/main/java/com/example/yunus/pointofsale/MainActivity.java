@@ -179,23 +179,11 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId() /*to get clicked view id**/) {
 
             case R.id.buttonSend:
-                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-                httpClient.sslSocketFactory(getSSLSocketFactory());
-                httpClient.hostnameVerifier(new HostnameVerifier() {
-
-                    @Override
-                    public boolean verify(String hostname, SSLSession session) {
-                        return true;
-                    }
-                });
-
-                OkHttpClient client = httpClient.build();
                 //retrofit = builder.client(client).build();
 
                 SaleRequest saleRequest = new SaleRequest(totalPrice.toString());
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .client(client)
                         .baseUrl(Api.BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
                         .build();

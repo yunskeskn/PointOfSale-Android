@@ -11,7 +11,9 @@ import retrofit2.http.POST;
 
 public interface Api {
 
-    String BASE_URL = "https://posnetict.yapikredi.com.tr/MerchantBE/api/";
+    //String BASE_URL = "https://posnetict.yapikredi.com.tr/MerchantBE/api/";
+
+    String BASE_URL = "http://www.zehraisilyilmaz.com/MerchantBE/api/";
 
     @POST("Sale")
     Call<SaleResponse> Sale(@Body SaleRequest saleRequest);
